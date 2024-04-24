@@ -67,19 +67,22 @@ const Overlay = styled.div`
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 130%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Fundo transparente */
+  background-color: rgba(0, 0, 0, .7); /* Fundo transparente */
   display: ${props => (props.hovering ? 'block' : 'none')}; /* Visível apenas quando hovering é verdadeiro */
+  justify-content: center; /* Alinha o conteúdo horizontalmente */
+  align-items: center; /* Alinha o conteúdo verticalmente */
 `;
 
 const TabText = styled.p`
   position: absolute;
   top: 10px;
-  left: 50%;
+  left: 40%;
   transform: translateX(-50%);
   color: #fff;
   font-size: 16px;
+  padding: 45px;
 `;
 
 const ReplacementText = styled.p`
@@ -89,8 +92,10 @@ const ReplacementText = styled.p`
   transform: translateX(-50%);
   color: #fff;
   font-size: 16px;
+  margin: 15px;
 `;
-const Card = ({ title, content, paragrafo, image, tabMessage }) => {
+
+const Card = ({ title, content, paragrafo, image, tabMessage, replacementMessage }) => {
   const [hovering, setHovering] = useState(false);
 
   return (
@@ -105,10 +110,11 @@ const Card = ({ title, content, paragrafo, image, tabMessage }) => {
       </CardContent2>
       <Overlay hovering={hovering}>
         <TabText>{tabMessage}</TabText>
-        <ReplacementText>Texto substituto para conteúdo oculto</ReplacementText>
+        <ReplacementText>{replacementMessage}</ReplacementText>
       </Overlay>
     </CardWrapper>
   );
 };
+
 
 export default Card;
